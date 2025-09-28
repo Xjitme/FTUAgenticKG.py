@@ -123,24 +123,3 @@ The `FTUAgenticKG` appears designed to:
         # Add logic to fetch data (e.g., for signal_hunger or ops_scope)
         # Example: self.ftu_data['external_data'] = api_response
 ```
-
-#### 4. GitHub Actions Workflow
-To run `FTUAgenticKG.py` with the secret:
-```yaml
-name: Run FTUAgenticKG
-on: [push]
-jobs:
-  run-script:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-      - name: Install dependencies
-        run: pip install networkx
-      - name: Run FTUAgenticKG
-        env:
-          FTU_API_KEY: ${{ secrets.FTU_API_KEY }}
-        run: python FTUAgenticKG.py
